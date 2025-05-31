@@ -1,0 +1,16 @@
+{
+  "list_comprehension": {
+    "title": "Basic List Comprehension",
+    "code": "[x**2 for x in range(10)]",
+    "explanation": "Generates a list of squares from 0 to 9 using list comprehension.",
+    "tags": ["list", "comprehension", "loops"],
+    "difficulty": "easy"
+  },
+  "dict_merge": {
+    "title": "Merge Two Dictionaries",
+    "code": "dict1 | dict2",
+    "explanation": "Uses the merge operator to combine two dictionaries (Python 3.9+).",
+    "tags": ["dictionary", "merge", "syntax"],
+    "difficulty": "easy"
+  }
+}
