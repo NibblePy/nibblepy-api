@@ -1,11 +1,11 @@
 {
-  "variables": {
-    "title": "Variables",
+  "variables_and_types": {
+    "title": "Variables and Basic Data Types",
     "code": "x = 5\nname = 'Alice'\nis_active = True\npi = 3.14",
     "explanation": "Shows how to create variables with different data types: integer, string, boolean, float.",
     "tags": ["variables", "data types", "basics"],
     "difficulty": "easy",
-    "related": ["data_types", "conditionals", "functions", "list_operations"]
+    "related": ["conditionals", "functions", "list_operations"]
   },
 
   "list_operations": {
