@@ -5,6 +5,6 @@ client = TestClient(app)
 
 
 def test_read_snippet():
-    response = client.get("/snippet?topic=list_comprehension")
+    response = client.get("/snippet?topic=list_operations")
     assert response.status_code == 200
     assert "code" in response.json() or "title" in response.json()
