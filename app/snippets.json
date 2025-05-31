@@ -19,7 +19,7 @@
 
   "dictionaries": {
     "title": "Dictionary Basics",
-    "code": "person = {'name': 'Bob', 'age': 30}\nprint(person['name'])  # Bob\nperson['age'] = 31",
+    "code": "person = {'name': 'Bob', 'age': 30}\nprint(person['name'])  # Bob\nperson['age'] = 32",
     "explanation": "How to create a dictionary, access values by key, and update entries.",
     "tags": ["dictionary", "mapping", "basics"],
     "difficulty": "easy",
