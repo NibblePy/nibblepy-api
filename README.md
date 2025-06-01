@@ -55,5 +55,5 @@ We welcome contributions of all kinds — whether you're submitting a new Python
 ## 👤 Author
 
 **Piotr Daniel**  
-[GitHub: @piotr-daniel](https://github.com/piotr-daniel)  
+[![GitHub](https://img.shields.io/badge/GitHub-%2312100E.svg?logo=github&logoColor=white)](https://github.com/piotr-daniel)    
 📧 [piotr.daniel4@gmail.com](mailto:piotr.daniel4@gmail.com)
