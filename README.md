@@ -10,7 +10,7 @@
 
 ---
 
-## 🚀 Overview
+## Overview
 
 **NibblePy** is designed to help learners explore Python fundamentals through small, focused code snippets.
 
@@ -25,7 +25,7 @@ Built with **FastAPI**, this project welcomes contributions from educators, deve
 
 ---
 
-## 📦 Example Snippet
+## Example Snippet
 
 ```json
 {
@@ -38,14 +38,14 @@ Built with **FastAPI**, this project welcomes contributions from educators, deve
 }
 ```
 
-## 📘 Live API Documentation
+## Live API Documentation
 Explore the interactive, auto-generated docs here:
 
-👉 https://nibblepy-api.onrender.com/docs
+📘 https://nibblepy-api.onrender.com/docs
 
 Powered by FastAPI, these docs let you test endpoints and preview responses directly in your browser.
 
-## 🤝 Contributing
+## Contributing
 
 We welcome contributions of all kinds — whether you're submitting a new Python snippet, improving the backend, fixing bugs, or writing documentation.
 
