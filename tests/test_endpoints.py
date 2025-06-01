@@ -12,3 +12,4 @@ def test_read_snippet():
     assert "explanation" in response.json()
     assert "difficulty" in response.json()
     assert "related" in response.json()
+    assert "category" in response.json()

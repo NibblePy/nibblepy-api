@@ -8,3 +8,4 @@ class SnippetResponse(BaseModel):
     explanation: str
     difficulty: str
     related: List[str]
+    category: str
