@@ -22,13 +22,13 @@ Built using **FastAPI**, this project is open for contributions from educators, 
 
 ```json
 {
-  "title": "Variables and Data Types",
-  "code": "x = 42\nname = 'Alice'\nis_active = True",
-  "explanation": "This shows how to declare variables with different data types in Python.",
-  "tags": ["variables", "data types"],
-  "difficulty": "easy",
-  "related": ["conditionals", "functions"]
+  "title": "Variables and Basic Data Types",
+  "code": "x = 5\nname = 'Alice'\nis_active = True\npi = 3.14",
+  "explanation": "Shows how to create variables with different data types: integer, string, boolean, float.",
+  "difficulty": "beginner",
+  "related": ["conditionals", "functions", "list_operations"]
 }
+
 ```
 
 ---
@@ -43,8 +43,7 @@ Built using **FastAPI**, this project is open for contributions from educators, 
   "title": "Your Snippet Title",
   "code": "example_code_here()",
   "explanation": "Brief explanation of what the code does.",
-  "tags": ["tag1", "tag2"],
-  "difficulty": "easy | medium | hard",
+  "difficulty": "beginner | intermediate | advanced",
   "related": ["related_concept1", "related_concept2"]
 }
 ```

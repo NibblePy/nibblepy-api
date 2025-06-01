@@ -3,89 +3,70 @@
     "title": "Variables and Basic Data Types",
     "code": "x = 5\nname = 'Alice'\nis_active = True\npi = 3.14",
     "explanation": "Shows how to create variables with different data types: integer, string, boolean, float.",
-    "tags": ["variables", "data types", "basics"],
-    "difficulty": "easy",
+    "difficulty": "beginner",
     "related": ["conditionals", "functions", "list_operations"]
   },
-
   "list_operations": {
     "title": "List Creation and Basic Operations",
     "code": "fruits = ['apple', 'banana', 'cherry']\nfruits.append('date')\nprint(fruits[1])  # banana\nfruits.remove('apple')",
     "explanation": "Creates a list, appends an item, accesses by index, and removes an item.",
-    "tags": ["list", "collections", "operations"],
-    "difficulty": "easy",
+    "difficulty": "beginner",
     "related": ["dictionaries", "for_loop", "list_comprehension_basic"]
   },
-
   "dictionaries": {
     "title": "Dictionary Basics",
     "code": "person = {'name': 'Bob', 'age': 30}\nprint(person['name'])  # Bob\nperson['age'] = 32",
     "explanation": "How to create a dictionary, access values by key, and update entries.",
-    "tags": ["dictionary", "mapping", "basics"],
-    "difficulty": "easy",
+    "difficulty": "beginner",
     "related": ["list_operations", "functions", "conditionals"]
   },
-
   "conditionals": {
     "title": "If-Else Conditional",
     "code": "age = 18\nif age >= 18:\n    print('Adult')\nelse:\n    print('Minor')",
     "explanation": "Checks a condition and executes code accordingly.",
-    "tags": ["conditional", "control flow", "basics"],
-    "difficulty": "easy",
+    "difficulty": "beginner",
     "related": ["variables_and_types", "loops", "functions"]
   },
-
   "for_loop": {
     "title": "For Loop Over a List",
     "code": "numbers = [1, 2, 3]\nfor num in numbers:\n    print(num * 2)",
     "explanation": "Loops through a list and prints each number multiplied by two.",
-    "tags": ["loop", "for", "basics"],
-    "difficulty": "easy",
+    "difficulty": "beginner",
     "related": ["conditionals", "list_operations", "list_comprehension_basic"]
   },
-
   "functions": {
     "title": "Function Definition and Call",
     "code": "def greet(name):\n    return f'Hello, {name}!'\n\nprint(greet('Alice'))",
     "explanation": "Defines a function that takes a parameter and returns a greeting string.",
-    "tags": ["function", "definition", "basics"],
-    "difficulty": "easy",
+    "difficulty": "beginner",
     "related": ["variables_and_types", "conditionals", "basic_class"]
   },
-
   "list_comprehension_basic": {
     "title": "List Comprehension",
     "code": "[x**2 for x in range(5)]",
     "explanation": "Creates a list of squares from 0 to 4 using list comprehension.",
-    "tags": ["list", "comprehension", "basics"],
-    "difficulty": "medium",
+    "difficulty": "intermediate",
     "related": ["for_loop", "list_operations"]
   },
-
   "exception_handling": {
     "title": "Try-Except for Exception Handling",
     "code": "try:\n    x = 1 / 0\nexcept ZeroDivisionError:\n    print('Cannot divide by zero')",
     "explanation": "Catches a division by zero error and handles it gracefully.",
-    "tags": ["exception", "error handling", "basics"],
-    "difficulty": "medium",
+    "difficulty": "intermediate",
     "related": ["conditionals", "functions"]
   },
-
   "file_reading": {
     "title": "Read a File",
     "code": "with open('file.txt', 'r') as file:\n    contents = file.read()\n    print(contents)",
     "explanation": "Opens a text file and prints its contents.",
-    "tags": ["file", "I/O", "basics"],
-    "difficulty": "medium",
+    "difficulty": "intermediate",
     "related": ["exception_handling", "functions"]
   },
-
   "basic_class": {
     "title": "Basic Class Definition",
     "code": "class Person:\n    def __init__(self, name):\n        self.name = name\n\n    def greet(self):\n        return f'Hi, I am {self.name}'\n\np = Person('Alice')\nprint(p.greet())",
     "explanation": "Defines a class with an initializer and a method, then creates and uses an object.",
-    "tags": ["class", "OOP", "basics"],
-    "difficulty": "medium",
+    "difficulty": "intermediate",
     "related": ["functions", "variables_and_types"]
   }
 }

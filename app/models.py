@@ -6,5 +6,5 @@ class SnippetResponse(BaseModel):
     title: str
     code: str
     explanation: str
-    tags: List[str]
     difficulty: str
+    related: List[str]
