@@ -33,3 +33,8 @@ def get_snippets(
         filtered[key] = snippet
 
     return filtered
+
+
+@router.get("/health")
+def check_api_health():
+    return {"ok": True}
