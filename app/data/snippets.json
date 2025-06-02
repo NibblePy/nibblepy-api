@@ -1,8 +1,8 @@
 {
   "variables_and_types": {
     "title": "Variables and Basic Data Types",
-    "code": "x = 5\nname = 'Alice'\nis_active = True\npi = 3.14",
-    "explanation": "Shows how to create variables with different data types: integer, string, boolean, float.",
+    "code": "x = 5  # integer\nname = 'Alice'  # string\nis_active = True  # boolean\npi = 3.14  # float\nx = 'extra'  # string",
+    "explanation": "Shows how to create variables with different data types: integer, string, boolean, float. There's no need to declare a type in Python, it will be assigned at the creation and can be overwritten as with variable 'x' in the snippet.",
     "difficulty": "beginner",
     "related": [
       "conditionals",
