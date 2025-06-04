@@ -38,12 +38,23 @@ Built with **FastAPI**, this project welcomes contributions from educators, deve
 }
 ```
 
+---
+
 ## Live API Documentation
 Explore the interactive, auto-generated docs here:
 
 📘 https://nibblepy-api.onrender.com/docs
 
 Powered by FastAPI, these docs let you test endpoints and preview responses directly in your browser.
+
+---
+
+## Demo App
+Experience NibblePy usage with our designated learning app:
+
+🐍 https://nibblepy.streamlit.app
+
+---
 
 ## Contributing
 
