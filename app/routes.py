@@ -35,6 +35,22 @@ def get_snippets(
     return filtered
 
 
+@router.get("/categories", tags=["Metadata"])
+def list_categories():
+    """Return a list of all available categories"""
+    snippets = fetch_all_snippets()
+    categories = sorted({s.get("category", "Uncategorized") for s in snippets.values()})
+    return {"categories": categories}
+
+
+@router.get("/difficulties", tags=["Metadata"])
+def list_difficulties():
+    """Return a list of all available difficulty levels"""
+    snippets = fetch_all_snippets()
+    difficulties = sorted({s.get("difficulty", "unknown") for s in snippets.values()})
+    return {"difficulties": difficulties}
+
+
 @router.get("/health")
 def check_api_health():
     return {"ok": True}

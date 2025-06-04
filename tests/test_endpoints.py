@@ -23,6 +23,18 @@ def test_fetch_all_snippets():
     assert "category" in response.json()[next(iter(response.json()))]
 
 
+def test_list_categories():
+    response = client.get("/categories")
+    assert response.status_code == 200
+    assert len(response.json()) > 0
+
+
+def test_list_difficulties():
+    response = client.get("/difficulties")
+    assert response.status_code == 200
+    assert len(response.json()) > 0
+
+
 def test_health():
     response = client.get("/health")
     assert response.status_code == 200
