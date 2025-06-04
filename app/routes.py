@@ -1,27 +1,30 @@
 from fastapi import HTTPException, Query, APIRouter
-from typing import Optional
+from typing import Optional, List
 from app.utils import get_snippets_by_topic, fetch_all_snippets
 from app.models import SnippetResponse
 
 router = APIRouter()
+snippets = fetch_all_snippets()
 
 
-@router.get("/snippet", response_model=SnippetResponse)
+@router.get("/snippet", response_model=SnippetResponse, tags=["Snippets"])
 def read_snippet(topic: str = Query(..., description="Topic of the snippet")):
-    """Fetch code snippet for the given topic"""
+    """
+    GET code snippet for the given snippet title
+    Example: /snippet?topic=dictionaries
+    """
     snippet = get_snippets_by_topic(topic)
     if snippet:
         return snippet
     raise HTTPException(status_code=404, detail="Snippet not found")
 
 
-@router.get("/snippets")
+@router.get("/snippets", tags=["Snippets"])
 def get_snippets(
     difficulty: Optional[str] = Query(None, description="Filter by difficulty: beginner, intermediate, advanced"),
     category: Optional[str] = Query(None, description="Filter by category (e.g. data types, loops, etc.)")
 ):
-    """Fetch all snippets and filter by difficulty or category"""
-    snippets = fetch_all_snippets()
+    """GET all snippets and filter by difficulty or category"""
     filtered = {}
 
     for key, snippet in snippets.items():
@@ -37,20 +40,60 @@ def get_snippets(
 
 @router.get("/categories", tags=["Metadata"])
 def list_categories():
-    """Return a list of all available categories"""
-    snippets = fetch_all_snippets()
+    """GET a list of all available categories"""
     categories = sorted({s.get("category", "Uncategorized") for s in snippets.values()})
     return {"categories": categories}
 
 
 @router.get("/difficulties", tags=["Metadata"])
 def list_difficulties():
-    """Return a list of all available difficulty levels"""
-    snippets = fetch_all_snippets()
+    """GET a list of all available difficulty levels"""
     difficulties = sorted({s.get("difficulty", "unknown") for s in snippets.values()})
     return {"difficulties": difficulties}
 
 
-@router.get("/health")
+@router.get("/snippets/search", tags=["Snippets"])
+def search_snippets(query: str = Query(..., min_length=1, description="Search query string")):
+    """
+    GET snippets matching the query
+    Example: /snippets/search?query=list
+    """
+    query_lower = query.lower()
+    results = []
+
+    for key, snippet in snippets.items():
+        if (
+            query_lower in snippet["title"].lower()
+            or query_lower in snippet["code"].lower()
+            or query_lower in snippet["explanation"].lower()
+        ):
+            results.append({**snippet, "id": key})
+
+    return {"results": results, "count": len(results)}
+
+
+@router.get("/snippets", tags=["Snippets"])  # To replace original all snippets route
+def filter_snippets(
+    category: Optional[str] = Query(None, description="Category name"),
+    difficulty: Optional[str] = Query(None, description="Difficulty level"),
+    related: Optional[List[str]] = Query(None, description="Related concept(s)")
+):
+    results = []
+
+    for key, snippet in snippets.items():
+        if category and snippet.get("category", "").lower() != category.lower():
+            continue
+        if difficulty and snippet.get("difficulty", "").lower() != difficulty.lower():
+            continue
+        if related:
+            if not any(rel.lower() in [r.lower() for r in snippet.get("related", [])] for rel in related):
+                continue
+
+        results.append({**snippet, "id": key})
+
+    return {"results": results, "count": len(results)}
+
+
+@router.get("/health", tags=["Utils"])
 def check_api_health():
     return {"ok": True}
