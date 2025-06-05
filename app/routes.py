@@ -94,6 +94,6 @@ def filter_snippets(
     return {"results": results, "count": len(results)}
 
 
-@router.get("/health", tags=["Utils"])
+@router.api_route("/health", methods=["GET", "HEAD"], tags=["Utils"])
 def check_api_health():
     return {"status": "ok"}
