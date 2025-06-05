@@ -96,4 +96,4 @@ def filter_snippets(
 
 @router.get("/health", tags=["Utils"])
 def check_api_health():
-    return {"ok": True}
+    return {"status": "ok"}

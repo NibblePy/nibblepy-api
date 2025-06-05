@@ -13,8 +13,8 @@
   },
   "list_operations": {
     "title": "List Creation and Basic Operations",
-    "code": "fruits = ['apple', 'banana', 'cherry']\nfruits.append('date')\nprint(fruits[1])  # banana\nfruits.remove('apple')",
-    "explanation": "Creates a list, appends an item, accesses by index, and removes an item.",
+    "code": "fruits = ['apple', 'banana', 'cherry']  # create list\nfruits.append('plum')  # ['apple', 'banana', 'cherry', 'plum']\nprint(fruits[1])  # banana\nfruits.remove('apple')  # ['banana', 'cherry', 'plum']\nfruits_sorted = fruits.sort(reverse=True)  # ['plum', 'cherry', 'banana']",
+    "explanation": "Creates a list, appends an item, accesses element by index, and removes an item. Last method sorts the list by descending (reverse) order.",
     "difficulty": "beginner",
     "related": [
       "dictionaries",
