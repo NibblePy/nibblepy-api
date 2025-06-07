@@ -63,11 +63,11 @@ def search_snippets(query: str = Query(..., min_length=1, description="Search qu
 
     for key, snippet in snippets.items():
         if (
-            query_lower in snippet["title"].lower()
-            or query_lower in snippet["code"].lower()
-            or query_lower in snippet["explanation"].lower()
+            query_lower in snippet.title.lower()
+            or query_lower in snippet.code.lower()
+            or query_lower in snippet.explanation.lower()
         ):
-            results.append({**snippet, "id": key})
+            results.append({**snippet.dict(), "id": key})
 
     return {"results": results, "count": len(results)}
 
