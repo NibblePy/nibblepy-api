@@ -1,10 +1,9 @@
 import json
 import os
 from pathlib import Path
+from app.models import SnippetModel
 
-DATA_PATH = Path(__file__).parent / "data" / "snippets.json"
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-SNIPPETS_DIR = os.path.join(BASE_DIR, "data")
+SNIPPETS_DIR = Path(__file__).parent / "data"
 
 
 def get_snippet_by_topic(topic: str) -> dict | None:
@@ -15,11 +14,15 @@ def get_snippet_by_topic(topic: str) -> dict | None:
     return None
 
 
-def load_all_snippets(snippets_dir=SNIPPETS_DIR):
+def load_all_snippets():
     snippets = {}
-    for filename in os.listdir(snippets_dir):
-        if filename.endswith(".json"):
-            filepath = os.path.join(snippets_dir, filename)
-            with open(filepath, "r") as f:
-                snippets[filename[:-5]] = json.load(f)
+    for file in SNIPPETS_DIR.glob("*.json"):
+        with open(file, "r", encoding="utf-8") as f:
+            raw = json.load(f)
+            try:
+                snippet = SnippetModel(**raw)
+                snippet_id = file.stem
+                snippets[snippet_id] = snippet
+            except Exception as e:
+                print(f"❌ Error in {file.name}: {e}")
     return snippets

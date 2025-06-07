@@ -1,11 +1,11 @@
-from pydantic import BaseModel
-from typing import List
+from pydantic import BaseModel, Field
+from typing import List, Literal
 
 
-class SnippetResponse(BaseModel):
+class SnippetModel(BaseModel):
     title: str
     code: str
     explanation: str
-    difficulty: str
-    related: List[str]
+    difficulty: Literal["beginner", "intermediate", "advanced"]
+    related: List[str] = Field(default_factory=list)
     category: str

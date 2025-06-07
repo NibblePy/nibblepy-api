@@ -1,13 +1,13 @@
 from fastapi import HTTPException, Query, APIRouter
 from typing import Optional, List
 from app.utils import get_snippet_by_topic, load_all_snippets
-from app.models import SnippetResponse
+from app.models import SnippetModel
 
 router = APIRouter()
 snippets = load_all_snippets()
 
 
-@router.get("/snippet", response_model=SnippetResponse, tags=["Snippets"])
+@router.get("/snippet", response_model=SnippetModel, tags=["Snippets"])
 def read_snippet(topic: str = Query(..., description="Topic of the snippet")):
     """
     GET code snippet for the given snippet title
@@ -28,9 +28,9 @@ def get_snippets(
     filtered = {}
 
     for key, snippet in snippets.items():
-        if difficulty and snippet.get("difficulty", "").lower() != difficulty.lower():
+        if difficulty and snippet.difficulty.lower() != difficulty.lower():
             continue
-        if category and snippet.get("category", "").lower() != category.lower():
+        if category and snippet.category != category.lower():
             continue
 
         filtered[key] = snippet
@@ -41,14 +41,14 @@ def get_snippets(
 @router.get("/categories", tags=["Metadata"])
 def list_categories():
     """GET a list of all available categories"""
-    categories = sorted({s.get("category", "Uncategorized") for s in snippets.values()})
+    categories = sorted({s.category or "Uncategorized" for s in snippets.values()})
     return {"categories": categories}
 
 
 @router.get("/difficulties", tags=["Metadata"])
 def list_difficulties():
     """GET a list of all available difficulty levels"""
-    difficulties = sorted({s.get("difficulty", "unknown") for s in snippets.values()})
+    difficulties = sorted({s.difficulty or "Uncategorized" for s in snippets.values()})
     return {"difficulties": difficulties}
 
 
@@ -81,12 +81,12 @@ def filter_snippets(
     results = []
 
     for key, snippet in snippets.items():
-        if category and snippet.get("category", "").lower() != category.lower():
+        if category and snippet.category.lower() != category.lower():
             continue
-        if difficulty and snippet.get("difficulty", "").lower() != difficulty.lower():
+        if difficulty and snippet.difficulty.lower() != difficulty.lower():
             continue
         if related:
-            if not any(rel.lower() in [r.lower() for r in snippet.get("related", [])] for rel in related):
+            if not any(rel.lower() in [r.lower() for r in snippet.related] for rel in related):
                 continue
 
         results.append({**snippet, "id": key})
