@@ -25,8 +25,8 @@
   },
   "dictionaries": {
     "title": "Dictionary Basics",
-    "code": "person = {'name': 'Bob', 'age': 30}\nprint(person['name'])  # Bob\nperson['age'] = 32",
-    "explanation": "How to create a dictionary, access values by key, and update entries.",
+    "code": "person = {'name': 'Bob', 'age': 30}  # create a dictionary with keys 'name' and 'age'\nprint(person['name'])  # prints person's name - Bob\nperson['age'] = 32  # assign new value to the person's 'age' key\nperson['interests'] = ['python', 'music', 'books']  # add new key 'interests' to the persons dictionary and assign a list of interests\nperson.pop('name)  # {'age': 32, 'interests': ['python', 'music', 'books']",
+    "explanation": "How to create a dictionary, access values by key, and update value. Next add a new item and assign a list of values to it, and lastly remove an item.",
     "difficulty": "beginner",
     "related": [
       "list_operations",
