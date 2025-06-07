@@ -25,7 +25,7 @@
   },
   "dictionaries": {
     "title": "Dictionary Basics",
-    "code": "person = {'name': 'Bob', 'age': 30}  # create a dictionary\nprint(person['name'])  # Bob\nperson['age'] = 32  # {'name': 'Bob', 'age': 32}\nperson['interests'] = ['python', 'music', 'books']  # {'name': 'Bob', 'age': 30, 'interests': ['python', 'music', 'books']}\nperson.pop('name)  # {'age': 32, 'interests': ['python', 'music', 'books']}",
+    "code": "person = {'name': 'Bob', 'age': 30}  # create a dictionary\nprint(person['name'])  # Bob\nperson['age'] = 32  # {'name': 'Bob', 'age': 32}\nperson['interests'] = ['python', 'music', 'books']  # {'name': 'Bob', 'age': 32, 'interests': ['python', 'music', 'books']}\nperson.pop('name')  # {'age': 32, 'interests': ['python', 'music', 'books']}",
     "explanation": "Creates a dictionary with keys 'name' and 'age', access values by key 'name', and update value of 'age'. Next add a new item 'interests' and assign a list of values to it, and lastly remove an item from the dictionary.",
     "difficulty": "beginner",
     "related": [
