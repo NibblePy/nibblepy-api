@@ -1,0 +1,12 @@
+{
+    "title": "Function Definition and Call",
+    "code": "def greet(name):\n    return f'Hello, {name}!'\n\nprint(greet('Alice'))",
+    "explanation": "Defines a function that takes a parameter and returns a greeting string. Functions help organize reusable code.",
+    "difficulty": "beginner",
+    "related": [
+       "variables_and_types",
+       "conditionals",
+       "basic_class"
+    ],
+    "category": "Functions"
+}

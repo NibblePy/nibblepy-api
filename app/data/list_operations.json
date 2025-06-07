@@ -1,0 +1,12 @@
+{
+    "title": "List Creation and Basic Operations",
+    "code": "fruits = ['apple', 'banana', 'cherry']  # create list\nfruits.append('plum')  # add an item\nprint(fruits[1])  # banana\nfruits.remove('apple')  # remove an item\nfruits.sort(reverse=True)  # sort in descending order (in-place)",
+    "explanation": "Creates a list, appends an item, accesses an element by index, removes an item, and sorts the list in descending order. Note that the sort() method modifies the list in place and returns None.",
+    "difficulty": "beginner",
+    "related": [
+        "dictionaries",
+        "for_loop",
+        "list_comprehension_basic"
+    ],
+    "category": "Data Structures"
+}

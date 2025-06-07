@@ -29,13 +29,19 @@ Built with **FastAPI**, this project welcomes contributions from educators, deve
 
 ```json
 {
-  "title": "Variables and Basic Data Types",
-  "code": "x = 5\nname = 'Alice'\nis_active = True\npi = 3.14",
-  "explanation": "Shows how to create variables with different data types: integer, string, boolean, float.",
-  "difficulty": "beginner",
-  "related": ["conditionals", "functions", "list_operations"],
-  "category": "Basics"
+  "unique_snippet_key": {
+    "title": "Descriptive Snippet Title",
+    "code": "your_code_here  # optional inline comments\nadditional_code_lines",
+    "explanation": "Clear and concise explanation of what the code does and why it’s useful. Include important Python details or gotchas if relevant.",
+    "difficulty": "beginner | intermediate | advanced",
+    "related": [
+      "related_snippet_key1",
+      "related_snippet_key2"
+    ],
+    "category": "Meaningful Category Name"
+  }
 }
+
 ```
 
 ---

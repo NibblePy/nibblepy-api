@@ -1,17 +1,25 @@
 import json
+import os
 from pathlib import Path
 
 DATA_PATH = Path(__file__).parent / "data" / "snippets.json"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+SNIPPETS_DIR = os.path.join(BASE_DIR, "data")
 
 
-def get_snippets_by_topic(topic: str):
-    """Retrieves JSON object for given topic"""
-    with open(DATA_PATH, "r") as f:
-        data = json.load(f)
-    return data.get(topic.lower())
+def get_snippet_by_topic(topic: str) -> dict | None:
+    filepath = os.path.join(SNIPPETS_DIR, f"{topic.lower()}.json")
+    if os.path.exists(filepath):
+        with open(filepath, "r") as f:
+            return json.load(f)
+    return None
 
 
-def fetch_all_snippets():
-    """Retrieves JSON object with all snippets"""
-    with open(DATA_PATH, "r", encoding="utf-8") as f:
-        return json.load(f)
+def load_all_snippets(snippets_dir=SNIPPETS_DIR):
+    snippets = {}
+    for filename in os.listdir(snippets_dir):
+        if filename.endswith(".json"):
+            filepath = os.path.join(snippets_dir, filename)
+            with open(filepath, "r") as f:
+                snippets[filename[:-5]] = json.load(f)
+    return snippets

@@ -1,0 +1,11 @@
+{
+    "title": "Try-Except for Exception Handling",
+    "code": "try:\n    x = 1 / 0\nexcept ZeroDivisionError:\n    print('Cannot divide by zero')",
+    "explanation": "Handles runtime errors gracefully using try-except blocks to catch specific exceptions and prevent program crashes.",
+    "difficulty": "intermediate",
+    "related": [
+       "conditionals",
+       "functions"
+    ],
+    "category": "Error Handling"
+}

@@ -1,0 +1,12 @@
+{
+    "title": "Dictionary Basics",
+    "code": "person = {'name': 'Bob', 'age': 30}  # create a dictionary\nprint(person['name'])  # Bob\nperson['age'] = 32  # update 'age' value\nperson['interests'] = ['python', 'music', 'books']  # add a new key with a list value\nperson.pop('name')  # remove the 'name' key",
+    "explanation": "Creates a dictionary and shows how to access values by key, update an existing key's value, add new key-value pairs, and remove keys using pop(). Dictionaries store key-value pairs with fast lookup.",
+    "difficulty": "beginner",
+    "related": [
+        "list_operations",
+        "functions",
+        "conditionals"
+    ],
+    "category": "Data Structures"
+}

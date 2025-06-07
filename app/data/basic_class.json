@@ -1,0 +1,11 @@
+{
+    "title": "Basic Class Definition",
+    "code": "class Person:\n    def __init__(self, name):\n        self.name = name\n\n    def greet(self):\n        return f'Hi, I am {self.name}'\n\np = Person('Alice')\nprint(p.greet())",
+    "explanation": "Defines a class with an initializer and a method, creates an instance, and calls a method. Object-oriented programming helps organize complex programs.",
+    "difficulty": "intermediate",
+    "related": [
+       "functions",
+       "variables_and_types"
+    ],
+    "category": "OOP"
+}

@@ -1,10 +1,10 @@
 from fastapi import HTTPException, Query, APIRouter
 from typing import Optional, List
-from app.utils import get_snippets_by_topic, fetch_all_snippets
+from app.utils import get_snippet_by_topic, load_all_snippets
 from app.models import SnippetResponse
 
 router = APIRouter()
-snippets = fetch_all_snippets()
+snippets = load_all_snippets()
 
 
 @router.get("/snippet", response_model=SnippetResponse, tags=["Snippets"])
@@ -13,7 +13,7 @@ def read_snippet(topic: str = Query(..., description="Topic of the snippet")):
     GET code snippet for the given snippet title
     Example: /snippet?topic=dictionaries
     """
-    snippet = get_snippets_by_topic(topic)
+    snippet = get_snippet_by_topic(topic)
     if snippet:
         return snippet
     raise HTTPException(status_code=404, detail="Snippet not found")
@@ -72,7 +72,7 @@ def search_snippets(query: str = Query(..., min_length=1, description="Search qu
     return {"results": results, "count": len(results)}
 
 
-@router.get("/snippets", tags=["Snippets"])  # To replace original all snippets route
+@router.get("/snippets", tags=["Snippets"])
 def filter_snippets(
     category: Optional[str] = Query(None, description="Category name"),
     difficulty: Optional[str] = Query(None, description="Difficulty level"),
