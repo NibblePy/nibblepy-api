@@ -1,4 +1,4 @@
-# Contributing to NibblePy Snippet API
+# Contributing to NibblePy API
 
 Thank you for your interest in contributing! 🎉  
 We welcome all contributions that help expand and improve our collection of Python code snippets.
@@ -18,10 +18,10 @@ We welcome all contributions that help expand and improve our collection of Pyth
    - `code`: The code snippet (use `\n` for newlines).
    - `explanation`: A clear explanation of what the code does.
    - `difficulty`: One of `beginner`, `intermediate`, or `advanced`.
-   - `category`: A relevant category (e.g., "Data Structures", "File I/O").
+   - `category`: A relevant category from the list in `data/_CATEGORIES.json`. If your snippet doesn’t fit, choose "Miscellaneous" and suggest a new category in your PR description.
 6. **(Optional) Validate your JSON file using the provided script:**
    ```sh
-   python scripts/validate_snippets.py data/your-snippet-file.json
+   python scripts/validate_snippets.py your-snippet-file.json
    ```
 7. **Open a Pull Request (PR) describing your snippet and its value.**
 8. **Do not edit or submit the SQLite database.**  

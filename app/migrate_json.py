@@ -13,7 +13,7 @@ db = SessionLocal()
 
 # Insert all snippets from all JSON files (ignoring any 'related' field)
 for filename in os.listdir(DATA_DIR):
-    if filename.endswith(".json") and filename != "_TEMPLATE.json" or "categories.json":
+    if filename.endswith(".json") and not filename.startswith("_"):
         filepath = os.path.join(DATA_DIR, filename)
         with open(filepath, "r", encoding="utf-8") as f:
             snip = json.load(f)  # Each file contains a single snippet dict
