@@ -1,0 +1,34 @@
+name: Validate Snippets
+
+on:
+  pull_request:
+    paths:
+      - 'app/data/*.json'
+      - 'scripts/validate_snippets.py'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: Get changed JSON files
+      id: changed-files
+      uses: tj-actions/changed-files@v44
+      with:
+        files: app/data/*.json
+
+    - name: Validate new or modified snippets
+      if: steps.changed-files.outputs.all_changed_files != ''
+      run: |
+        for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+          echo "Validating $file"
+          python scripts/validate_snippets.py "$file"
+        done
