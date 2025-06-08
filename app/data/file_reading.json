@@ -3,9 +3,5 @@
     "code": "with open('file.txt', 'r') as file:\n    contents = file.read()\n    print(contents)",
     "explanation": "Opens a text file safely, reads its entire content, and prints it. Using 'with' ensures the file is closed automatically.",
     "difficulty": "intermediate",
-    "related": [
-       "exception_handling",
-       "functions"
-    ],
     "category": "File I/O"
 }

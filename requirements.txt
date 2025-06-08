@@ -1,5 +1,6 @@
-fastapi
-uvicorn
+fastapi~=0.115.12
+uvicorn~=0.34.2
 pytest
 httpx
-pydantic
+pydantic~=2.11.5
+SQLAlchemy~=2.0.41

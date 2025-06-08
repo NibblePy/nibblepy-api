@@ -3,10 +3,5 @@
     "code": "age = 18\nif age >= 18:\n    print('Adult')\nelse:\n    print('Minor')",
     "explanation": "Executes different blocks of code based on a condition. Python uses indentation to define code blocks, which is important to follow carefully.",
     "difficulty": "beginner",
-    "related": [
-        "variables_and_types",
-        "loops",
-        "functions"
-    ],
     "category": "Control Flow"
 }

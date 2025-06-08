@@ -1,97 +1,92 @@
-from fastapi import HTTPException, Query, APIRouter
+from fastapi import HTTPException, Query, APIRouter, Depends, status
 from typing import Optional, List
-from app.utils import get_snippet_by_topic, load_all_snippets
+from sqlalchemy.orm import Session
+from sqlalchemy import or_
+
+from app.database import get_db
 from app.models import SnippetModel
+from app.schemas import SnippetSchema, SnippetCreate
 
 router = APIRouter()
-snippets = load_all_snippets()
 
 
-@router.get("/snippet", response_model=SnippetModel, tags=["Snippets"])
-def read_snippet(topic: str = Query(..., description="Topic of the snippet")):
+@router.get("/snippet", response_model=SnippetSchema, tags=["Snippets"])
+def read_snippet(topic: str = Query(..., description="Topic of the snippet"), db: Session = Depends(get_db)):
     """
-    GET code snippet for the given snippet title
+    GET code snippet by topic (title)
     Example: /snippet?topic=dictionaries
     """
-    snippet = get_snippet_by_topic(topic)
+    snippet = db.query(SnippetModel).filter(SnippetModel.title.ilike(topic)).first()
     if snippet:
         return snippet
     raise HTTPException(status_code=404, detail="Snippet not found")
 
 
-@router.get("/snippets", tags=["Snippets"])
+@router.get("/snippets", response_model=List[SnippetSchema], tags=["Snippets"])
 def get_snippets(
-    difficulty: Optional[str] = Query(None, description="Filter by difficulty: beginner, intermediate, advanced"),
-    category: Optional[str] = Query(None, description="Filter by category (e.g. data types, loops, etc.)")
+    difficulty: Optional[str] = Query(None, description="Filter by difficulty"),
+    category: Optional[str] = Query(None, description="Filter by category"),
+    db: Session = Depends(get_db)
 ):
-    """GET all snippets and filter by difficulty or category"""
-    filtered = {}
+    query = db.query(SnippetModel)
 
-    for key, snippet in snippets.items():
-        if difficulty and snippet.difficulty.lower() != difficulty.lower():
-            continue
-        if category and snippet.category != category.lower():
-            continue
+    if category:
+        query = query.filter(SnippetModel.category.ilike(category))
+    if difficulty:
+        query = query.filter(SnippetModel.difficulty.ilike(difficulty))
 
-        filtered[key] = snippet
-
-    return filtered
+    return query.all()
 
 
 @router.get("/categories", tags=["Metadata"])
-def list_categories():
+def list_categories(db: Session = Depends(get_db)):
     """GET a list of all available categories"""
-    categories = sorted({s.category or "Uncategorized" for s in snippets.values()})
-    return {"categories": categories}
+    categories = db.query(SnippetModel.category).distinct().all()
+    return {"categories": sorted({c[0] or "Uncategorized" for c in categories})}
 
 
 @router.get("/difficulties", tags=["Metadata"])
-def list_difficulties():
+def list_difficulties(db: Session = Depends(get_db)):
     """GET a list of all available difficulty levels"""
-    difficulties = sorted({s.difficulty or "Uncategorized" for s in snippets.values()})
-    return {"difficulties": difficulties}
+    difficulties = db.query(SnippetModel.difficulty).distinct().all()
+    return {"difficulties": sorted({d[0] for d in difficulties})}
 
 
 @router.get("/snippets/search", tags=["Snippets"])
-def search_snippets(query: str = Query(..., min_length=1, description="Search query string")):
-    """
-    GET snippets matching the query
-    Example: /snippets/search?query=list
-    """
-    query_lower = query.lower()
-    results = []
-
-    for key, snippet in snippets.items():
-        if (
-            query_lower in snippet.title.lower()
-            or query_lower in snippet.code.lower()
-            or query_lower in snippet.explanation.lower()
-        ):
-            results.append({**snippet.dict(), "id": key})
-
-    return {"results": results, "count": len(results)}
-
-
-@router.get("/snippets", tags=["Snippets"])
-def filter_snippets(
-    category: Optional[str] = Query(None, description="Category name"),
-    difficulty: Optional[str] = Query(None, description="Difficulty level"),
-    related: Optional[List[str]] = Query(None, description="Related concept(s)")
+def search_snippets(
+    query: str = Query(..., min_length=1, description="Search query string"),
+    db: Session = Depends(get_db)
 ):
-    results = []
-
-    for key, snippet in snippets.items():
-        if category and snippet.category.lower() != category.lower():
-            continue
-        if difficulty and snippet.difficulty.lower() != difficulty.lower():
-            continue
-        if related:
-            if not any(rel.lower() in [r.lower() for r in snippet.related] for rel in related):
-                continue
-
-        results.append({**snippet, "id": key})
-
+    """Search in title, code, and explanation"""
+    query_lower = f"%{query.lower()}%"
+    results = db.query(SnippetModel).filter(
+        or_(
+            SnippetModel.title.ilike(query_lower),
+            SnippetModel.code.ilike(query_lower),
+            SnippetModel.explanation.ilike(query_lower)
+        )
+    ).all()
     return {"results": results, "count": len(results)}
+
+
+@router.post("/snippets", response_model=SnippetSchema, status_code=status.HTTP_201_CREATED, tags=["Snippets"])
+def create_snippet(snippet: SnippetCreate, db: Session = Depends(get_db)):
+    existing = db.query(SnippetModel).filter(SnippetModel.title == snippet.title).first()
+    if existing:
+        raise HTTPException(status_code=400, detail="Snippet with this title already exists")
+
+    db_snippet = SnippetModel(
+        title=snippet.title,
+        code=snippet.code,
+        explanation=snippet.explanation,
+        category=snippet.category,
+        difficulty=snippet.difficulty,
+    )
+
+    db.add(db_snippet)
+    db.commit()
+    db.refresh(db_snippet)
+    return db_snippet
 
 
 @router.api_route("/health", methods=["GET", "HEAD"], tags=["Utils"])
