@@ -1,7 +1,7 @@
 {
     "title": "List Comprehension",
-    "code": "[x**2 for x in range(5)]  # squares from 0 to 4",
-    "explanation": "Creates a new list by applying an expression to each item in a range, producing squares of numbers from 0 to 4.",
+    "code": "name = 'Piotr'\nprint([character for character in name])  # ['P', 'i', 'o', 't', 'r']\nprint([x**2 for x in range(5)])  # [0, 1, 4, 9, 16]",
+    "explanation": "Creates a new list by applying an expression to each item in a range, first example iterates over a string and creates an element for each character in the name, and the second example is producing squares of numbers from 0 to 4.",
     "difficulty": "intermediate",
     "category": "Comprehensions"
 }
