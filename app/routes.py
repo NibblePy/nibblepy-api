@@ -1,11 +1,11 @@
-from fastapi import HTTPException, Query, APIRouter, Depends, status
+from fastapi import HTTPException, Query, APIRouter, Depends
 from typing import Optional, List
 from sqlalchemy.orm import Session
 from sqlalchemy import or_
 
 from app.database import get_db
 from app.models import SnippetModel
-from app.schemas import SnippetSchema, SnippetCreate
+from app.schemas import SnippetSchema
 
 router = APIRouter()
 
@@ -38,20 +38,6 @@ def get_snippets(
     return query.all()
 
 
-@router.get("/categories", tags=["Metadata"])
-def list_categories(db: Session = Depends(get_db)):
-    """GET a list of all available categories"""
-    categories = db.query(SnippetModel.category).distinct().all()
-    return {"categories": sorted({c[0] or "Uncategorized" for c in categories})}
-
-
-@router.get("/difficulties", tags=["Metadata"])
-def list_difficulties(db: Session = Depends(get_db)):
-    """GET a list of all available difficulty levels"""
-    difficulties = db.query(SnippetModel.difficulty).distinct().all()
-    return {"difficulties": sorted({d[0] for d in difficulties})}
-
-
 @router.get("/snippets/search", tags=["Snippets"])
 def search_snippets(
     query: str = Query(..., min_length=1, description="Search query string"),
@@ -69,24 +55,18 @@ def search_snippets(
     return {"results": results, "count": len(results)}
 
 
-@router.post("/snippets", response_model=SnippetSchema, status_code=status.HTTP_201_CREATED, tags=["Snippets"])
-def create_snippet(snippet: SnippetCreate, db: Session = Depends(get_db)):
-    existing = db.query(SnippetModel).filter(SnippetModel.title == snippet.title).first()
-    if existing:
-        raise HTTPException(status_code=400, detail="Snippet with this title already exists")
+@router.get("/categories", tags=["Metadata"])
+def list_categories(db: Session = Depends(get_db)):
+    """GET a list of all available categories"""
+    categories = db.query(SnippetModel.category).distinct().all()
+    return {"categories": sorted({c[0] or "Uncategorized" for c in categories})}
 
-    db_snippet = SnippetModel(
-        title=snippet.title,
-        code=snippet.code,
-        explanation=snippet.explanation,
-        category=snippet.category,
-        difficulty=snippet.difficulty,
-    )
 
-    db.add(db_snippet)
-    db.commit()
-    db.refresh(db_snippet)
-    return db_snippet
+@router.get("/difficulties", tags=["Metadata"])
+def list_difficulties(db: Session = Depends(get_db)):
+    """GET a list of all available difficulty levels"""
+    difficulties = db.query(SnippetModel.difficulty).distinct().all()
+    return {"difficulties": sorted({d[0] for d in difficulties})}
 
 
 @router.api_route("/health", methods=["GET", "HEAD"], tags=["Utils"])
