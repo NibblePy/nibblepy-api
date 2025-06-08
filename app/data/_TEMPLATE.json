@@ -1,0 +1,7 @@
+{
+  "title": "Descriptive Snippet Title",
+  "code": "your_code_here  # optional inline comments (use `\\n` for newlines)",
+  "explanation": "Clear, concise explanation.",
+  "difficulty": "beginner | intermediate | advanced",
+  "category": "Meaningful Category Name"
+}

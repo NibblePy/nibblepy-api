@@ -3,5 +3,5 @@
     "code": "x = 5  # integer\nname = 'Alice'  # string\nis_active = True  # boolean\npi = 3.14  # float\nx = 'extra'  # now x is a string",
     "explanation": "Demonstrates how to create variables with different data types: integer, string, boolean, and float. Python variables are dynamically typed, meaning you don't declare their type explicitly and can reassign variables to different types, as shown with variable 'x'.",
     "difficulty": "beginner",
-    "category": "Basics"
+    "category": "Variables"
 }
