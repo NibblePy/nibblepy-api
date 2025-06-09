@@ -4,7 +4,13 @@ from datetime import datetime
 from app.database import SessionLocal, engine
 from app.models import Base, SnippetModel
 
-DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
+
+def get_project_root():
+    return os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+
+
+project_root = get_project_root()
+DATA_DIR = os.path.join(project_root, "app", "data")
 
 # Create tables if they don't exist yet
 Base.metadata.create_all(bind=engine)
