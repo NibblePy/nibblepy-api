@@ -5,7 +5,7 @@ from datetime import datetime
 from app.database import SessionLocal, engine
 from app.models import Base, SnippetModel
 
-# Ensure the project root is in sys.path for imports like 'from app...'
+
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 if project_root not in sys.path:
     sys.path.insert(0, project_root)
