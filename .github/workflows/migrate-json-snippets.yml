@@ -9,9 +9,6 @@ jobs:
   migrate:
     runs-on: ubuntu-latest
 
-    env:
-      PYTHONPATH: ${{ github.workspace }}
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
