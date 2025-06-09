@@ -3,3 +3,5 @@
 .env
 *.pyc
 scribbles.txt
+snippets.db
+migrate-json-snippets.yml
