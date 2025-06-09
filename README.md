@@ -29,17 +29,11 @@ Built with **FastAPI**, this project welcomes contributions from educators, deve
 
 ```json
 {
-  "unique_snippet_key": {
-    "title": "Descriptive Snippet Title",
-    "code": "your_code_here  # optional inline comments\nadditional_code_lines",
-    "explanation": "Clear and concise explanation of what the code does and why it’s useful. Include important Python details or gotchas if relevant.",
-    "difficulty": "beginner | intermediate | advanced",
-    "related": [
-      "related_snippet_key1",
-      "related_snippet_key2"
-    ],
-    "category": "Meaningful Category Name"
-  }
+  "title": "Descriptive Snippet Title",
+  "code": "your_code_here  # optional inline comments",
+  "explanation": "Clear, concise explanation.",
+  "difficulty": "beginner | intermediate | advanced",
+  "category": "Meaningful Category Name"
 }
 
 ```
