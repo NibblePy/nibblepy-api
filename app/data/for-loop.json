@@ -1,7 +1,7 @@
 {
     "title": "For Loop Over a List",
-    "code": "numbers = [1, 2, 3]\nfor num in numbers:\n    print(num * 2)",
-    "explanation": "Iterates through each item in a list and prints the number multiplied by two.",
+    "code": "numbers = [1, 2, 3]  # [1, 2, 3]\nfor num in numbers:\n    print(num * 2)  # 2, 4, 6\n\nnames = ['Diana', 'Tom', 'Bernie']\nfor name in names:\n    print('Hello ' + name)  # Hello Diana, Hello Tom, Hello Bernie",
+    "explanation": "Creates a list with numbers 1, 2 and 3, then iterates through each item in a list and prints the number multiplied by two. Second example similarly loops over the list of names and prints greeting for each.",
     "difficulty": "beginner",
     "category": "Control Flow"
 }
