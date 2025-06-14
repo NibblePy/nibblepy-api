@@ -24,8 +24,6 @@ We welcome all contributions that help expand and improve our collection of Pyth
    python scripts/validate_snippets.py your-snippet-file.json
    ```
 7. **Open a Pull Request (PR) describing your snippet and its value.**
-8. **Do not edit or submit the SQLite database.**  
-   The database is updated from JSON by maintainers after PRs are merged.
 
 ---
 
@@ -76,7 +74,6 @@ Copy the following template (or use `data/_TEMPLATE.json`):
 - [ ] All required fields are filled.
 - [ ] Difficulty is valid (`beginner`, `intermediate`, `advanced`).
 - [ ] (Optional) File passes validation script.
-- [ ] You did **not** edit the database file.
 
 ---
 
