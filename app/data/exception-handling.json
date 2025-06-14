@@ -1,7 +1,7 @@
 {
     "title": "Try-Except for Exception Handling",
-    "code": "try:\n    x = 1 / 0\nexcept ZeroDivisionError:\n    print('Cannot divide by zero')",
-    "explanation": "Handles runtime errors gracefully using try-except blocks to catch specific exceptions and prevent program crashes.",
+    "code": "try:  # try-except entry point keyword\n    x = 1 / 0  # risky calculation\nexcept ZeroDivisionError:  # except keyword and expected error\n    print('Cannot divide by zero')  # printed if error occur",
+    "explanation": "Handles runtime errors using try-except blocks to catch specific exceptions and prevent program crashes. The try: block can include any kind of code you'd like to be tested for errors, in this case we're trying to divide 1 by 0. The except block check for ZeroDivisionError and runs its code if the given error occur, in this example the print statement will be executed because the code in try block is diving by zero.",
     "difficulty": "intermediate",
     "category": "Error Handling"
 }
