@@ -1,7 +1,7 @@
 {
     "title": "If-Else Conditional",
-    "code": "age = 18\nif age >= 18:\n    print('Adult')\nelse:\n    print('Minor')",
-    "explanation": "Executes different blocks of code based on a condition. Python uses indentation to define code blocks, which is important to follow carefully.",
+    "code": "age = 18  # assign value 18 to 'age' variable\nif age >= 18:  # conditional check if 'age' is greater or equal 18\n    print('Adult')  # if check is true, print 'Adult'\nelse:  # if check is false do the below\n    print('Minor')  # Minor",
+    "explanation": "Executes different blocks of code based on a condition. Python uses indentation to define code blocks, which is important to follow carefully. In the given example the conditions are evaluated using the operator >= (greater or equal) and the 'else' statement catches all other outcomes (less then 18, including 0 and negative values).",
     "difficulty": "beginner",
     "category": "Control Flow"
 }

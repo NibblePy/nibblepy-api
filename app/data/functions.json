@@ -1,6 +1,6 @@
 {
     "title": "Function Definition and Call",
-    "code": "def greet(name):  # function definition\n    return f'Hello, {name}!'  # returned value(s)\n\nprint(greet('Alice'))  # Hello Alice",
+    "code": "def greet(name):  # function definition\n    return f'Hello, {name}!'  # returned value(s)\n\nprint(greet('Alice'))  # Hello Alice!",
     "explanation": "Defines a function that takes a parameter 'name' and returns a greeting string with it. Functions help organize reusable code and implement the DRY (don't repeat yourself) concept.",
     "difficulty": "beginner",
     "category": "Functions"
