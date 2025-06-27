@@ -1,0 +1,7 @@
+{
+  "title": "Using len() to Get Length",
+  "code": "my_list = [1, 2, 3, 4]\nprint(len(my_list))",
+  "explanation": "`len()` returns the number of items in a list, string, or other iterable. Here, it returns 4.",
+  "difficulty": "beginner",
+  "category": "Functions"
+}

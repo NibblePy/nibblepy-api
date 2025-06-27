@@ -1,0 +1,7 @@
+{
+  "title": "Using in to Check Membership",
+  "code": "colors = [\"red\", \"green\", \"blue\"]\nif \"green\" in colors:\n    print(\"Green is in the list!\")",
+  "explanation": "The `in` keyword checks if a value exists within a list or string. Returns `True` if found.",
+  "difficulty": "beginner",
+  "category": "Control Flow"
+}

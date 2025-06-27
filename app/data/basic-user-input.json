@@ -1,0 +1,7 @@
+{
+  "title": "Reading User Input",
+  "code": "name = input(\"What is your name? \")\nprint(f\"Hello, {name}!\")",
+  "explanation": "Prompts the user for input and prints a greeting. `input()` always returns a string.",
+  "difficulty": "beginner",
+  "category": "Input/Output"
+}

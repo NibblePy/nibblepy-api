@@ -1,0 +1,7 @@
+{
+  "title": "String Formatting with f-Strings",
+  "code": "name = \"Alice\"\nage = 25\nprint(f\"{name} is {age} years old.\")",
+  "explanation": "Uses f-strings to embed variables directly in a string. It’s a concise and readable way to format strings in Python.",
+  "difficulty": "beginner",
+  "category": "String Handling"
+}
