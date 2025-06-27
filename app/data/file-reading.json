@@ -1,7 +1,7 @@
 {
     "title": "Read a File",
-    "code": "with open('file.txt', 'r') as file:\n    contents = file.read()\n    print(contents)",
-    "explanation": "Opens a text file safely, reads its entire content, and prints it. Using 'with' ensures the file is closed automatically.",
+    "code": "with open('file.txt', 'r') as file:  # open for reading file.txt\n    contents = file.read()  # store file's content in a variable\n    print(contents)  # Python is cool!",
+    "explanation": "Opens a text file safely using a built-in context manager in read-only mode ('r' flag), reads its entire content, and prints it. Using 'with' ensures the file is closed automatically so that it can be accessed by other processes.",
     "difficulty": "intermediate",
     "category": "File Handling"
 }

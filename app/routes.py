@@ -1,8 +1,8 @@
+import random
 from fastapi import HTTPException, Query, APIRouter, Depends
 from typing import Optional, List
 from sqlalchemy.orm import Session
 from sqlalchemy import or_
-from enum import Enum
 
 from app.database import get_db
 from app.models import SnippetModel
@@ -47,6 +47,15 @@ def read_snippet(
     if snippet:
         return snippet
     raise HTTPException(status_code=404, detail="Snippet not found")
+
+
+@router.get("/snippet/random", response_model=SnippetSchema, tags=["Snippets"])
+def get_random_snippet(db: Session = Depends(get_db)):
+    """Return a single random snippet"""
+    snippets = db.query(SnippetModel).all()
+    if not snippets:
+        raise HTTPException(status_code=404, detail="No snippets available")
+    return random.choice(snippets)
 
 
 @router.get("/snippets", response_model=SnippetListResponse, tags=["Snippets"])
